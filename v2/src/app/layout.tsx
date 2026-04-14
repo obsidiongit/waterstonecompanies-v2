@@ -34,8 +34,11 @@ export default function RootLayout({
       className={`${dmSans.variable} ${dmSerifDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans text-foreground-muted bg-background">
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <Navbar />
-        <main id="main" className="flex-1">
+        <main id="main" className="flex-1" tabIndex={-1}>
           {children}
         </main>
         <Footer />

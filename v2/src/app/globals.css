@@ -137,3 +137,22 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Skip link (matches static site pattern) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  z-index: 10001;
+  padding: 0.5rem 1rem;
+  background: #0a0a0a;
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+}

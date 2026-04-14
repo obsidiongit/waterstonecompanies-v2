@@ -27,15 +27,26 @@ const serviceAreas = [
   "and nearby communities across East Alabama",
 ];
 
+function FacebookIcon(props: { className?: string }) {
+  return (
+    <svg
+      className={props.className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="bg-foreground text-foreground-subtle">
-      {/* Accent bar */}
       <div className="h-px bg-accent-dark" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           <div className="lg:col-span-2">
             <span className="text-primary-foreground text-lg font-semibold">
               <span className="text-foreground-subtle text-sm font-medium tracking-wide">
@@ -56,9 +67,28 @@ export function Footer() {
             <p className="mt-3 text-xs text-foreground-muted">
               Licensed &amp; Insured — AL #25174
             </p>
+            <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-foreground-muted">
+              <a
+                href="https://www.facebook.com/BrianCampCustomHome/"
+                className="text-foreground-subtle hover:text-primary-foreground transition-colors inline-flex"
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label="Waterstone Companies on Facebook"
+              >
+                <FacebookIcon className="w-7 h-7" />
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href="https://www.briancamp.com"
+                className="text-foreground-subtle hover:text-primary-foreground underline-offset-2 hover:underline transition-colors"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                BrianCamp.com
+              </a>
+            </p>
           </div>
 
-          {/* Explore */}
           <div>
             <h4 className="text-primary-foreground text-sm font-semibold mb-4">
               Explore
@@ -77,7 +107,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
             <h4 className="text-primary-foreground text-sm font-semibold mb-4">
               Company
@@ -96,7 +125,24 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          <div>
+            <h4 className="text-primary-foreground text-sm font-semibold mb-4">
+              Resources
+            </h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-foreground-subtle hover:text-primary-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div>
             <h4 className="text-primary-foreground text-sm font-semibold mb-4">
               Contact
@@ -153,8 +199,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Service Areas */}
-        <div className="mt-12 pt-8 border-t border-surface-raised">
+        <div className="mt-12 pt-8 border-t border-surface-raised" aria-label="Service area">
           <h4 className="text-primary-foreground text-sm font-semibold mb-2">
             Areas we serve
           </h4>
@@ -171,7 +216,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-surface-raised">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-foreground-subtle">
           <p>&copy; 2026 Waterstone Companies, LLC. All rights reserved.</p>
