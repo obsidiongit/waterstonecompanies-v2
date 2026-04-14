@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ===================================
+   WATERSTONE COMPANIES — Design System
+   Tailwind v4 theme tokens
+   =================================== */
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-sans), "DM Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-serif: var(--font-serif), "DM Serif Display", Georgia,
+    "Times New Roman", serif;
+
+  /* ── Colors ── */
+
+  /* Core Backgrounds */
+  --color-background: #ffffff;
+  --color-background-secondary: #f5f5f5;
+  --color-background-tertiary: #e5e5e5;
+
+  /* Core Text */
+  --color-foreground: #0a0a0a;
+  --color-foreground-muted: #525252;
+  --color-foreground-subtle: #a3a3a3;
+
+  /* Brand (Grayscale) */
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #fafafa;
+  --color-accent: #404040;
+  --color-accent-light: #f0f0f0;
+  --color-accent-dark: #262626;
+  --color-accent-on-inverse: #e8e8e8;
+
+  /* Semantic */
+  --color-success: #525252;
+  --color-warning: #737373;
+  --color-destructive: #171717;
+
+  /* Borders */
+  --color-border: #e5e5e5;
+  --color-border-light: #f0f0f0;
+  --color-border-strong: #d4d4d4;
+
+  /* Nav / Elevated Surfaces */
+  --color-surface: #141414;
+  --color-surface-raised: #262626;
+
+  /* ── Typography Scale ── */
+  --font-size-display: 4rem;
+  --font-size-display--line-height: 1.1;
+  --font-size-display--letter-spacing: -0.02em;
+
+  --font-size-h1: 3rem;
+  --font-size-h1--line-height: 1.15;
+  --font-size-h1--letter-spacing: -0.02em;
+
+  --font-size-h2: 2.25rem;
+  --font-size-h2--line-height: 1.25;
+  --font-size-h2--letter-spacing: -0.01em;
+
+  --font-size-h3: 1.5rem;
+  --font-size-h3--line-height: 1.3;
+
+  --font-size-h4: 1.25rem;
+  --font-size-h4--line-height: 1.4;
+
+  --font-size-body-lg: 1.125rem;
+  --font-size-body-lg--line-height: 1.65;
+
+  --font-size-body: 1rem;
+  --font-size-body--line-height: 1.65;
+
+  --font-size-body-sm: 0.875rem;
+  --font-size-body-sm--line-height: 1.5;
+
+  --font-size-label: 0.75rem;
+  --font-size-label--line-height: 1.4;
+  --font-size-label--letter-spacing: 0.08em;
+
+  /* ── Spacing Scale (4px base) ── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* ── Border Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* ── Transitions ── */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ── Base Styles ── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.65;
+}
+
+/* ── Focus States (Accessibility) ── */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #404040;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
