@@ -68,11 +68,6 @@ export default function OurWorkPage() {
                 <strong className="text-foreground">{files.length}</strong> images from our projects. Filter by project
                 type or browse everything — tap any photo to view larger.
               </p>
-              {/*
-                TODO: Static `our-work/index.html` also uses an inline “load more” batching script (`showMoreBtn`).
-                This page renders the full grid with lazy thumbnails for parity on content; incremental reveal can be
-                added later if we need identical UX on very slow connections.
-              */}
               <PortfolioGallery items={galleryItems} />
             </>
           )}

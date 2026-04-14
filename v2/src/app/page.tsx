@@ -56,6 +56,10 @@ const services = [
   },
 ];
 
+const FEATURED_HOME_SERVICE_HREF = "/services/sunrooms-pergolas";
+const featuredHomeService = services.find((s) => s.href === FEATURED_HOME_SERVICE_HREF)!;
+const homeServicesGrid = services.filter((s) => s.href !== FEATURED_HOME_SERVICE_HREF);
+
 const stats = [
   { value: "30+", label: "Years in the trade" },
   { value: "Flat-fee", label: "Quoted before we start" },
@@ -152,56 +156,56 @@ export default function Home() {
           )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/25" aria-hidden />
-        <div className="relative z-10 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <h1 className="font-serif text-display text-balance">Your outdoor space, done right.</h1>
-            <p className="mt-6 text-body-lg text-accent-on-inverse max-w-xl">
-              Decks, fences, sunrooms, roofing, siding &amp; more — flat-fee pricing, experienced crew, done on schedule.
-              Your East Alabama neighbors since 2016.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-accent-on-inverse">
-              <span>&#10003; Licensed &amp; Insured — AL #25174</span>
-              <span>&#10003; Temo Certified Dealer</span>
-              <span>&#10003; Flat fees &amp; transparent quotes</span>
-            </div>
-            <p className="mt-6 text-sm text-accent-on-inverse/90 max-w-lg">
-              Serving St. Clair County and East Jefferson County including Trussville (35173), Moody (35004), and
-              Odenville (35120).
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="h-11 px-5 bg-primary-foreground text-foreground text-sm font-semibold rounded-md hover:bg-accent-on-inverse transition-colors inline-flex items-center"
-              >
-                Get a Free Quote
-              </Link>
-              <Link
-                href="/our-work"
-                className="h-11 px-5 bg-transparent text-primary-foreground text-sm font-semibold rounded-md border border-accent-on-inverse/30 hover:bg-white/10 transition-colors inline-flex items-center"
-              >
-                View Our Work
-              </Link>
-            </div>
-          </div>
-          <div className="rounded-lg border border-white/15 bg-black/35 backdrop-blur-sm p-6 lg:p-8 text-left">
-            <h2 className="text-h4 font-semibold text-primary-foreground">Get your free quote</h2>
-            <p className="mt-2 text-body-sm text-accent-on-inverse">
-              Tell us what you&apos;re planning — we&apos;ll follow up quickly. Or call{" "}
-              <a href="tel:+12055750176" className="underline font-medium text-primary-foreground">
-                (205) 575-0176
-              </a>
-              .
-            </p>
+        <div className="relative z-10 max-w-3xl mx-auto w-full text-center px-2">
+          <h1 className="font-serif text-display text-balance">Your outdoor space, done right.</h1>
+          <p className="mt-6 text-body-lg text-accent-on-inverse text-pretty">
+            Decks, fences, sunrooms, roofing, siding &amp; more — flat-fee quotes and an experienced crew. East Alabama
+            since 2016.
+          </p>
+          <div className="mt-10 flex flex-col items-center gap-4">
             <Link
               href="/contact"
-              className="mt-6 h-11 px-5 w-full flex items-center justify-center bg-primary-foreground text-foreground text-sm font-semibold rounded-md hover:bg-accent-on-inverse transition-colors"
+              className="h-11 px-8 bg-primary-foreground text-foreground text-sm font-semibold rounded-md hover:bg-accent-on-inverse transition-colors inline-flex items-center justify-center w-full max-w-xs sm:w-auto sm:min-w-[12rem]"
             >
-              Go to contact form
+              Get a Free Quote
             </Link>
-            <p className="mt-4 text-xs text-accent-on-inverse/80 text-center">
-              Free estimate · No spam · Response in 24 hrs
-            </p>
+            <Link
+              href="/our-work"
+              className="text-sm font-medium text-accent-on-inverse underline-offset-4 hover:underline hover:text-primary-foreground transition-colors"
+            >
+              View our work
+            </Link>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="relative z-20 border-t border-white/10 bg-zinc-950 text-primary-foreground py-5 px-6"
+        aria-label="Credentials, service area, and phone"
+      >
+        <div className="max-w-5xl mx-auto space-y-3 text-center">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs sm:text-sm text-accent-on-inverse">
+            <span>&#10003; Licensed &amp; Insured — AL #25174</span>
+            <span>&#10003; Temo Certified Dealer</span>
+            <span>&#10003; Flat fees &amp; transparent quotes</span>
+          </div>
+          <p className="text-xs sm:text-sm text-accent-on-inverse/90 max-w-2xl mx-auto leading-relaxed">
+            Serving St. Clair County and East Jefferson County including Trussville (35173), Moody (35004), and
+            Odenville (35120).
+          </p>
+          <p className="text-xs sm:text-sm text-accent-on-inverse/90">
+            <a
+              href="tel:+12055750176"
+              className="font-semibold text-primary-foreground underline-offset-2 hover:underline"
+            >
+              (205) 575-0176
+            </a>
+            <span className="text-accent-on-inverse/50" aria-hidden>
+              {" "}
+              ·{" "}
+            </span>
+            <span>Free estimates · No spam · Response within 24 hrs</span>
+          </p>
         </div>
       </section>
 
@@ -226,24 +230,55 @@ export default function Home() {
               flat-fee pricing and an experienced crew.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                className="group relative min-h-[220px] overflow-hidden rounded-[10px] border border-border shadow-sm"
-              >
-                <Image src={s.image} alt="" fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground">
-                  <h3 className="text-h4 font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-body-sm text-accent-on-inverse line-clamp-2">{s.desc}</p>
-                  <span className="mt-3 inline-block text-sm font-medium text-accent-on-inverse group-hover:underline">
-                    Learn more →
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="space-y-6">
+            <Link
+              href={featuredHomeService.href}
+              className="group relative block min-h-[min(22rem,50vh)] w-full overflow-hidden rounded-[10px] border border-border shadow-sm md:min-h-[20rem]"
+            >
+              <Image
+                src={featuredHomeService.image}
+                alt=""
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width:1280px) 100vw, 72rem"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/40 to-black/10" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground md:p-8 md:max-w-2xl">
+                <h3 className="font-serif text-h2 md:text-h1 font-semibold">{featuredHomeService.title}</h3>
+                <p className="mt-3 text-body-lg text-accent-on-inverse line-clamp-3 md:line-clamp-none">
+                  {featuredHomeService.desc}
+                </p>
+                <span className="mt-4 inline-block text-sm font-medium text-accent-on-inverse group-hover:underline">
+                  Learn more →
+                </span>
+              </div>
+            </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {homeServicesGrid.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className="group relative min-h-[220px] overflow-hidden rounded-[10px] border border-border shadow-sm"
+                >
+                  <Image
+                    src={s.image}
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground">
+                    <h3 className="text-h4 font-semibold">{s.title}</h3>
+                    <p className="mt-2 text-body-sm text-accent-on-inverse line-clamp-2">{s.desc}</p>
+                    <span className="mt-3 inline-block text-sm font-medium text-accent-on-inverse group-hover:underline">
+                      Learn more →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
           <p className="mt-10 text-center text-body-sm text-foreground-muted">
             <Link href="/services" className="font-medium text-foreground underline-offset-2 hover:underline">

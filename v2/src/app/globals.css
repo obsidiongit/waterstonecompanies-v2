@@ -156,3 +156,89 @@ body {
 .skip-link:focus {
   left: 0.5rem;
 }
+
+/* Long-form blog (ported from static HTML articles) */
+.blog-content {
+  text-wrap: pretty;
+  max-width: 42rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.125rem;
+  font-size: var(--font-size-body);
+  line-height: calc(var(--font-size-body--line-height) * 1.05);
+  color: var(--color-foreground);
+}
+
+.blog-content > p:first-of-type {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--font-size-body-lg--line-height);
+  color: var(--color-foreground-muted);
+}
+
+.blog-content h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-serif);
+  font-size: var(--font-size-h3);
+  line-height: var(--font-size-h3--line-height);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground);
+}
+
+.blog-content h2:first-of-type {
+  margin-top: 0;
+}
+
+.blog-content h3 {
+  margin-top: 1.875rem;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-h4);
+  line-height: var(--font-size-h4--line-height);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground);
+}
+
+.blog-content h2 + h3 {
+  margin-top: 1rem;
+}
+
+.blog-content ul {
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.blog-content li {
+  margin-bottom: 0.625rem;
+  padding-left: 0.35rem;
+  font-size: var(--font-size-body);
+  line-height: calc(var(--font-size-body--line-height) * 1.08);
+  color: var(--color-foreground);
+}
+
+.blog-content li::marker {
+  color: var(--color-foreground-subtle);
+}
+
+.blog-content strong {
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.blog-content a {
+  color: var(--color-foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.blog-content a:hover {
+  color: var(--color-accent-dark);
+}

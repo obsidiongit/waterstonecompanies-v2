@@ -18,6 +18,7 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://waterstonehomes.com"),
   title: "Waterstone Companies | Home Improvement & Outdoor Living — East Alabama",
   description:
     "Waterstone Companies handles roofing, decks, fencing, sunrooms, siding, gutters, and more across St. Clair and East Jefferson County, AL. Flat fees, transparent quotes, 30+ years experience.",

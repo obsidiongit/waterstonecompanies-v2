@@ -19,6 +19,8 @@ const FILTERS: { id: string; label: string }[] = [
   { id: "interior", label: "Interior accents" },
 ];
 
+const THUMB_PAGE_SIZE = 15;
+
 type Props = {
   items: PortfolioGalleryItem[];
 };
@@ -26,11 +28,22 @@ type Props = {
 export function PortfolioGallery({ items }: Props) {
   const [active, setActive] = useState("all");
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [thumbLimit, setThumbLimit] = useState(THUMB_PAGE_SIZE);
 
   const visible = useMemo(() => {
     if (active === "all") return items;
     return items.filter((it) => it.categories.includes(active));
   }, [active, items]);
+
+  useEffect(() => {
+    setThumbLimit(THUMB_PAGE_SIZE);
+  }, [active]);
+
+  const thumbsToRender = useMemo(
+    () => visible.slice(0, thumbLimit),
+    [visible, thumbLimit],
+  );
+  const hasMoreThumbs = thumbLimit < visible.length;
 
   const close = useCallback(() => setLightbox(null), []);
 
@@ -73,7 +86,7 @@ export function PortfolioGallery({ items }: Props) {
 
       {/* Thumbs use unoptimized: large /photos archive + next/image Sharp per file spikes Node memory in dev. */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
-        {visible.map((it) => {
+        {thumbsToRender.map((it) => {
           const src = `/photos/${encodeURIComponent(it.name)}`;
           return (
             <button
@@ -95,6 +108,21 @@ export function PortfolioGallery({ items }: Props) {
           );
         })}
       </div>
+
+      {hasMoreThumbs ? (
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setThumbLimit((n) => Math.min(n + THUMB_PAGE_SIZE, visible.length))}
+            className="h-11 px-6 inline-flex items-center text-sm font-semibold rounded-md border border-border bg-background text-foreground hover:bg-background-secondary transition-colors"
+          >
+            Show more ({visible.length - thumbLimit} remaining)
+          </button>
+          <p className="text-xs text-foreground-muted">
+            Showing {thumbsToRender.length} of {visible.length} in this view
+          </p>
+        </div>
+      ) : null}
 
       {lightbox ? (
         <div
